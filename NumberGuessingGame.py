@@ -54,13 +54,18 @@ while is_running:
     while True:
         guess = input("Enter your guess: " )
 
-        if not guess.isdigit():
-            print("Something went wrong! Please try again")
-            continue
 
         guess = int(guess)
         guess_amount += 1
 
+        if guess < 1 or guess > 100:
+            print("Your guess must be between 1 and 100!")
+            continue
+
+        if not guess.isdigit():
+            print("Something went wrong! Please try again")
+            continue
+        
         if guess == correct_number:
             game_time_end = time.time()
             print(f"It took you {game_time_end - game_time_start:.2f} seconds to guess the number!")
